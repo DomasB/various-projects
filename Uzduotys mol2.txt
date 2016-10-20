@@ -1,0 +1,10 @@
+﻿Užrašykite šių junginių formules:<br /> Li O <br /> Mg F<br /> C O<br /> H S<br /> Ca Cl<br /> S O<br /> B H<br /> N O<br /> Si O | Li<sub>2</sub>O; MgF<sub>2</sub>; CO<sub>2</sub>; H<sub>2</sub>S; CaCl<sub>2</sub>; SO<sub>2</sub> SO<sub>3</sub>; BH<sub>3</sub>; NO; SiO<sub>2</sub> 
+Apskaičiuokite šių junginių santykines molekulines mases: PH<sub>3</sub>; NaCl; SO<sub>3</sub>; MgCl<sub>2</sub>; K<sub>2</sub>CO<sub>3</sub>; AlCl<sub>3</sub> | 34; 58,5; 80; 95; 138; 133,5
+Kiek sveria 2 mol deguonies (O<sub>2</sub>)? | 64g
+Kiek molių aliuminio yra 50 g aliuminio? | 1,85 mol
+Kiek sveria 6 mol amoniako (NH<sub>3</sub>)? | 102 g
+Kiek molių sieros oksido (SO<sub>2</sub>) yra 56 g sieros oksido? | 0,875 mol
+Kiek anglies dioksido (CO<sub>2</sub>) molekulių yra 22 g anglies dioksido? | 3,01 * 10<sup>23</sup> dal
+Kiek deguonies molekulių (O<sub>2</sub>) yra 8 g deguonies? | 1,505 * 10<sup>23</sup> dal
+Kiek sveria 3,01 * 10<sup>23</sup> anglies atomų? | 6 g
+Kiek sveria 18,06 * 10<sup>23</sup> azoto (N<sub>2</sub>) molekulių? | 84 g

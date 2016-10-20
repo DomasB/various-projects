@@ -1,0 +1,4 @@
+﻿Kiek gramų natrio gali sureaguoti su 142 g chloro? <br /> Na + Cl<sub>2</sub> → NaCl | m(Na)=92g.
+Kiek gramų anglies dioksido susidaro iš 8 g deguonies? <br />C + O<sub>2</sub> → CO<sub>2</sub> | m(CO<sub>2</sub>)=11g
+Kiek atomų sieros reikia norint pagaminti 40 g sieros oksido? <br />S + O<sub>2</sub> → SO<sub>2</sub> | N(S)=3.7625*10<sup>23</sup>dal
+Kiek gramų natrio gali sureaguoti su 12,04*10<sup>23</sup> molekulių deguonies? <br />Na + O<sub>2</sub> → Na<sub>2</sub>O | m(Na)=184g.

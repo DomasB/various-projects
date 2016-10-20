@@ -1,0 +1,53 @@
+<html>
+<head>
+<script src="jquery-2.1.1.min.js"></script>
+<script>
+
+$( document ).ready(function() {
+$( "input" ).change(function() {
+var ats = parseInt($("#1").val())+(parseInt($("#2").val())*2)+(parseInt($("#3").val())*4)+(parseInt($("#4").val())*7)+(parseInt($("#5").val())*10)+(parseInt($("#6").val())*15);
+$("#ats").val(ats);
+});
+$("body").keyup( function(e) {
+if(e.keyCode==97) $("#1").val(parseInt($("#1").val())+1).change();
+if(e.keyCode==98) $("#2").val(parseInt($("#2").val())+1).change();
+if(e.keyCode==99) $("#3").val(parseInt($("#3").val())+1).change();
+if(e.keyCode==100) $("#4").val(parseInt($("#4").val())+1).change();
+if(e.keyCode==101) $("#5").val(parseInt($("#5").val())+1).change();
+if(e.keyCode==102) $("#6").val(parseInt($("#6").val())+1).change();
+});
+
+});
+</script>
+<style>
+input {
+height: 50px;
+font-size:40px;
+width:80px;
+text-align:center;
+border:none;
+}
+div {
+display:block;
+padding:5px;
+font-size:60px;
+}
+
+#ats {
+text-align:left;
+height: 80px;
+font-size:60px;
+width:200px;
+}
+</style>
+</head>
+<body>
+<div><input type="number" value="0" id="1" /><img src="train.jpg" /></div>
+<div><input type="number" value="0" id="2" /><img src="train.jpg" /><img src="train.jpg" /></div>
+<div><input type="number" value="0" id="3" /><img src="train.jpg" /><img src="train.jpg" /><img src="train.jpg" /></div>
+<div><input type="number" value="0" id="4" /><img src="train.jpg" /><img src="train.jpg" /><img src="train.jpg" /><img src="train.jpg" /></div>
+<div><input type="number" value="0" id="5" /><img src="train.jpg" /><img src="train.jpg" /><img src="train.jpg" /><img src="train.jpg" /><img src="train.jpg" /></div>
+<div><input type="number" value="0" id="6" /><img src="train.jpg" /><img src="train.jpg" /><img src="train.jpg" /><img src="train.jpg" /><img src="train.jpg" /><img src="train.jpg" /></div>
+<div>Suma:<input type="number" id="ats" /></div>
+</body>
+</html>

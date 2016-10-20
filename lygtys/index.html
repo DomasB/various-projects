@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <title>Lygtys</title>
+  <meta name="Lygtys" content="chemijos lygtys">
+  <link rel="stylesheet" href="styles.css">
+  <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="scripts.js"></script>
+</head>
+<body onload="printall()">
+<div>
+Rodyti: <br />
+<input type="checkbox" id="chb1" checked="checked" onchange="printall()" /> Išlyginimą
+<input type="checkbox" id="chb2" checked="checked" onchange="printall()" /> Būsenas
+<input type="checkbox" id="chb3" checked="checked" onchange="printall()" /> Produktus
+</div>
+<div>
+Lygčių tipai: <br />
+<input type="checkbox" id="or" checked="checked" onchange="printall()" /> Oksidacijos-redukcijos
+<input type="checkbox" id="m" checked="checked" onchange="printall()" /> Mainų
+<input type="checkbox" id="s" checked="checked" onchange="printall()" /> Skilimo
+<input type="checkbox" id="p" checked="checked" onchange="printall()" /> Pakeitimo
+<input type="checkbox" id="e" checked="checked" onchange="printall()" /> Elektrolizės
+</div>
+<div>
+Lygiai: <div id="slider"></div>
+<input type="range" id="lvl1" min="0" max="5" value="0" onchange="printall(this.id)" /> 
+<input type="range" id="lvl2" min="0" max="5" value="0" onchange="printall(this.id)" /> 
+</div>
+<button id="shuffle" onclick="shuffle(st)"> Išmaišyti </button>
+<button id="shuffle" onclick="prnt()"> Spausdinti </button>
+<div id="main"></div>
+</body>
+</html>

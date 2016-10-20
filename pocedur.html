@@ -1,0 +1,91 @@
+<html>
+<head>
+	<script src="jquery-2.1.1.min.js"></script>
+	<script>
+		var roomx = [];
+		var roomy = [];
+		$( document ).ready(function() {
+			for(var x=0; x< ($( window ).width()/20)-1; x++) {
+				roomy=[];
+				for(var y=0; y<($( window ).height()/20)-1; y++) {
+					var p = Math.floor((Math.random() * 2) + 1)
+					
+					if (p==1) {
+						$("body").append("<div id='"+x+"a"+y+"' class='green' style = 'left:"+x*20+"px; top:"+y*20+"px' ></div>");
+						roomy[y]="green";
+					} else {
+						$("body").append("<div id='"+x+"a"+y+"' class='brown' style = 'left:"+x*20+"px; top:"+y*20+"px' ></div>");
+						roomy[y]="brown";
+					}
+					
+					
+				};
+				roomx[x]=roomy;
+				
+
+			};
+			
+			for(var x=0; x<roomx.length; x++) {
+				for(var y=0; y<roomx[x].length; y++) {
+					var a=0;
+					 if(x-1>=0&&y-1>=0&&x+1<roomx.length&&y+1<roomx[x].length) {
+						if(roomx[x+1][y+1]=="brown") a++;
+						if(roomx[x-1][y-1]=="brown") a++;
+						if(roomx[x-1][y+1]=="brown") a++;
+						if(roomx[x+1][y-1]=="brown") a++;
+						if(roomx[x][y+1]=="brown") a++;
+						if(roomx[x][y-1]=="brown") a++;
+						if(roomx[x-1][y]=="brown") a++;
+						if(roomx[x+1][y]=="brown") a++;
+						if(a>4){$("#"+x+"a"+y).removeClass("brown").addClass("green"); roomx[x][y]="green"}; 
+					};
+				};
+			};
+		$("#0a0").removeClass("brown").removeClass("green").addClass("blue"); 
+		var a=0;
+		var b=0;
+		$("body").keydown( function(e) {
+			var c = a;
+			var d = b;
+			if(e.keyCode==38) b--;
+			if(e.keyCode==40) b++;
+			if(e.keyCode==37) a--;
+			if(e.keyCode==39) a++;
+			if(a>=0 && b>=0 && a<roomx.length && b <roomx[a].length && roomx[a][b] != "brown") {$("#"+c+"a"+d).removeClass("blue").addClass("green"); $("#"+a+"a"+b).removeClass("green").addClass("blue")} else {
+			a=c;
+			b=d;
+			}; 
+			console.log(a+" "+b+" "+c+" "+d);
+		});
+		});
+		
+		
+		
+	</script>
+	<style> 
+		.brown {
+		border:solid 1px;
+		width:18px;
+		height:18px;
+		background:brown;		
+		}
+		.blue {
+		border:solid 1px;
+		width:18px;
+		height:18px;
+		background:blue;		
+		}
+		.green {
+		width:19px;
+		height:19px;
+		background:green;
+		}
+	
+		div {
+		position:absolute;
+		}
+	</style>
+</head>
+<body>
+</body>
+</html>

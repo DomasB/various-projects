@@ -1,0 +1,150 @@
+<html>
+<head>
+<script>
+
+var mreakt1 = 0;
+var mreakt2 = 0;
+var nreakt1 = 0;
+var nreakt2 = 0;
+var mreakt3 = 0;
+var mreakt4 = 0;
+var nreakt3 = 0;
+var nreakt4 = 0;
+var out1 =0;
+var out2 =0;
+var out3 =0;
+var out4 =0;
+var sum = 0;
+var mout = 0;
+var greit = 0;
+var k = 2500;
+var timeris = setInterval(function(){
+	var in1 = parseInt(document.getElementById("in1").value);
+	var in2 = parseInt(document.getElementById("in2").value);
+	var out = parseInt(document.getElementById("out").value);
+	var t = document.getElementById("t").value;
+	var v = document.getElementById("v").value;
+	var r = 0.08205736;
+		mreakt1 = mreakt1 + in1;
+		mreakt2 = mreakt2 + in2;
+	
+
+	nreakt1 = mreakt1 / 16;
+	nreakt2 = mreakt2 / 32;
+	nreakt3 = mreakt3 / 44;
+	nreakt4 = mreakt4 / 18;
+	if (nreakt1>0 && nreakt2>0) {
+		 greit = (k * (nreakt1/v)*(nreakt2/v))/10;
+		
+			nreakt2 = nreakt2 - greit*3;
+			nreakt3 = nreakt3 + greit*2;
+			nreakt4 = nreakt4 + greit;
+			nreakt1 = nreakt1 - greit;
+
+
+	}
+		mreakt1 = (nreakt1 * 16);
+		mreakt2 = (nreakt2 * 32);
+		mreakt3 = (nreakt3 * 44);
+		mreakt4 = (nreakt4 * 18);
+		if (mreakt1 < 0) mreakt1 = 0;
+		if (mreakt2 < 0) mreakt2 = 0;
+		if (mreakt3 < 0) mreakt3 = 0;
+		if (mreakt4 < 0) mreakt4 = 0;
+	
+	if ((mreakt1 == 0 && mreakt2 == 0 && mreakt3 == 0)||(mreakt1 == 0 && mreakt2 == 0 && mreakt4 == 0)||(mreakt2 == 0 && mreakt3 == 0 && mreakt4 == 0)||(mreakt1 == 0 && mreakt3 == 0 && mreakt4 == 0)) mout = out;
+	else if ((mreakt1 == 0 && mreakt2 ==0)||(mreakt1 == 0 && mreakt3 ==0)||(mreakt1 == 0 && mreakt4 ==0)||(mreakt2 == 0 && mreakt3 ==0)||(mreakt2 == 0 && mreakt4 ==0)||(mreakt3 == 0 && mreakt4 ==0)) mout=out/2;
+	else if((mreakt1==0)||(mreakt2==0)||(mreakt3==0)||(mreakt4==0)) mout=out/3;
+	else mout=out/4;
+		out1 = mreakt1;
+		out2 = mreakt2;
+		out3 = mreakt3;
+		out4 = mreakt4;
+		mreakt1 = (nreakt1 * 16) - mout;
+		mreakt2 = (nreakt2 * 32) - mout;
+		mreakt3 = (nreakt3 * 44) - mout;
+		mreakt4 = (nreakt4 * 18) - mout;
+	
+		
+		
+		if (mreakt1 < 0) mreakt1 = 0;
+		if (mreakt2 < 0) mreakt2 = 0;
+		if (mreakt3 < 0) mreakt3 = 0;
+		if (mreakt4 < 0) mreakt4 = 0;
+		out1 = out1-mreakt1;
+		out2 = out2-mreakt2;
+		out3 = out3-mreakt3;
+		out4 = out4-mreakt4;
+	sum = mreakt1 + mreakt2 + mreakt3 + mreakt4;	
+	document.getElementById("medz1").style.height = 0+"px";
+	document.getElementById("medz2").style.height = 0+"px";
+	document.getElementById("medz3").style.height = 0+"px";
+	document.getElementById("medz4").style.height = 0+"px";
+	document.getElementById("reaktorius").style.height = v+"px";
+	document.getElementById("medz1").style.height = (mreakt1/sum)*v + "px";
+	document.getElementById("medz1").style.background = document.getElementById("cl1").value;
+	document.getElementById("medz2").style.height = (mreakt2/sum)*v + "px";
+	document.getElementById("medz2").style.background = document.getElementById("cl2").value;
+	document.getElementById("medz3").style.height = (mreakt3/sum)*v + "px";
+	document.getElementById("medz4").style.height = (mreakt4/sum)*v + "px";
+	document.getElementById("medz1").style.opacity = ((mreakt1/16)*r*t/v)/10;
+	document.getElementById("medz2").style.opacity = ((mreakt2/32)*r*t/v)/10;
+	document.getElementById("medz3").style.opacity = ((mreakt3/44)*r*t/v)/10;
+	document.getElementById("medz4").style.opacity = ((mreakt4/18)*r*t/v)/10;
+	
+	var p = ((mreakt1/16)*r*t/v)+((mreakt2/32)*r*t/v)+((mreakt3/44)*r*t/v)+((mreakt4/18)*r*t/v);	
+	
+	document.getElementById("txt").innerHTML = "CH<sub>4</sub>: "+out1+"g/s<br/>    O<sub>2</sub>: "+out2+"g/s<br/>     CO<sub>2</sub>: "+out3+"g/s<br/>    H<sub>2</sub>O: "+out4+"g/s<br/>p: "+p+"atm";
+	if (p>100) document.getElementById("out").value = 100;
+	console.log(document.getElementById("cl1").value+"    "+document.getElementById("cl2").value);
+
+
+}, 100);
+</script>
+<style>
+	#medz1 {
+		background:#A12;
+	}
+	#medz2 {
+		background:#522;
+	}
+	#medz3 {
+		background:#832;
+	}
+	#medz4 {
+		background:#042;
+	}
+	#reaktorius {
+	width:100px;
+	border:1px solid;
+	}
+	#reaktorius div {
+	 width:100px;
+	
+	}
+
+
+
+
+</style>
+</head>
+
+<body>
+<input id="cl1" type="color" value="#008000" />
+CH<sub>4</sub> <input id="in1" type="range" value="0" min="0" /> g/s
+<input id="cl2" type="color" value="#0000ff" />
+O<sub>2</sub> <input id="in2" type="range" value="0" min="0" /> g/s
+Out  <input id="out" type="range" value="0" min="0" /> g/s
+V 	 <input id="v" type="range" value="100" min="1" max="1000"/> l
+T 	<input id="t" type="range" value="273" min="0" max="10000"/> K
+<div id="reaktorius">
+<div id="medz1"></div>
+<div id="medz2"></div>
+<div id="medz3"></div>
+<div id="medz4"></div>
+</div>
+<div id="txt"></div>
+</body>
+
+
+</html>

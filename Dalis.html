@@ -1,0 +1,78 @@
+<html>
+<head>
+<script>
+function skaic() {
+var a = parseInt(document.getElementById("1").value);
+var b = parseInt(document.getElementById("2").value);
+var c = a + b;
+if(!document.getElementById("ch").checked) {
+
+a=Math.round((a/c)*100);
+b=Math.round((b/c)*100);
+c=a+b;
+}
+
+document.getElementById("vienas").style.height = a + "px";
+document.getElementById("vienas").style.lineHeight = a + "px";
+document.getElementById("vienas").style.fontSize = a + "px";
+document.getElementById("du").style.height = b + "px";
+document.getElementById("du").style.lineHeight = b + "px";
+document.getElementById("du").style.fontSize = b + "px";
+document.getElementById("visas").style.height = c + "px";
+document.getElementById("vienas").innerHTML=""+a;
+document.getElementById("du").innerHTML=""+b;
+if(document.getElementById("ch").checked) document.getElementById("bendras").innerHTML="Viso: "+c+"<br /> ω<sub>1</sub> = " +Math.round((a/c)*10000)/100+"%"+"<br /> ω<sub>2</sub> = " +Math.round((b/c)*10000)/100+"%";
+else document.getElementById("bendras").innerHTML="Viso: "+c;
+}
+</script>
+
+<style>
+#visas{
+height:100px;
+width:60%;
+font-size:300%;
+}
+
+#vienas{
+background:#80ff00 ;
+height:100px;
+text-align: center;
+vertical-align: middle;
+line-height: 90px;
+
+}
+#du {
+background:#0080ff;
+height:100px;
+text-align: center;
+vertical-align: middle;
+line-height: 90px;
+
+}
+input{
+width:60%;
+}
+
+#bendras {
+position:fixed;
+top:0px;
+left:60%;
+font-size:30px;
+}
+
+</style>
+
+</head>
+<body>
+<input id="ch" type="checkbox"></input>
+<input oninput="skaic()" id="1" type="range" value="50" max="200"></input>
+<input oninput="skaic()" id="2" type="range" value="50" max="200"></input>
+<div id="visas">
+<div id="vienas" ></div>
+<div id="du" ></div>
+<div id="bendras" ></div>
+
+</div>
+
+</body>
+</html>

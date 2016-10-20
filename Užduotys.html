@@ -1,0 +1,162 @@
+<html>
+	<title>Užduotys</title>
+    <head>
+		<script src="jquery-2.1.1.min.js"></script>
+        <script>
+            var a = 0;
+			var time;
+			var myTimer=[];
+			
+            function clik(e) {
+                if ($("#"+e).css("background-color") == "rgb(0, 0, 0)") $("#"+e).css("background", "#FFF");
+                else $("#"+e).css("background", "#000000");
+			
+            };
+			
+			$(function(){
+					$('#addfile').click(function(e){
+						e.preventDefault();
+						$('#files').click();}
+					);
+			});
+			window.onload = function() {
+
+				if (window.File && window.FileList && window.FileReader) {
+					var filesInput = document.getElementById("files");
+
+					filesInput.addEventListener("change", function(event) {
+
+						var files = event.target.files; //FileList object
+						
+
+						for (var i = 0; i < files.length; i++) {
+							var file = files[i];
+
+							//Only plain text
+							if (!file.type.match('plain')) continue;
+
+							var picReader = new FileReader();
+
+							picReader.addEventListener("load", function(event) {
+
+								var textFile = event.target;
+
+								
+
+								var data = textFile.result.split("\n");
+								for (i=0;i<data.length;i++) {
+									var uzd = data[i].split("|");
+								
+									$("#bod").append("<li><div id='" + a + "' contenteditable>"+uzd[0]+"<div style='display:none' id='a" + a + "'>Ats.:"+uzd[1]+"</div></div><div class='barb' id='b" + a + "'> <div class='bar' id='t" + a + "'></div> </div><button onClick='clik(" + a + ")'>h</button><button onClick='ats(" + a + ")'>a</button><button onClick='del(" + a + ")'>x</button><button onClick='time(" + a + ")'>+1</button></li>");
+									$("#"+a).css("background", "#000");
+									a++;
+									
+								};
+								
+
+							});
+
+							//Read the text file
+							picReader.readAsText(file);
+						}
+
+					});
+				}
+				else {
+					console.log("Your browser does not support File API");
+				};
+			};
+			
+            function add() {
+                				
+				$("#bod").append("<li><div style='display:inline;' id='" + a + "' contenteditable></div> <button onClick='clik(" + a + ")'>h</button><button onClick='del(" + a + ")'>x</button></li>");
+				a++;
+			};
+			
+			function del(e) {
+			$("#"+e).parent().fadeOut();
+			};
+			function ats(e) {
+			$("#a"+e).toggle(500);
+			};
+			
+			function time(e){
+			
+				if (time[e] > 0) {
+					time[e]=time[e]+120;
+					$("#b"+e).css('width',$("#b"+e).width()+120);
+				}
+				else {	
+					time[e] = 120;
+					$("#b"+e).css('width',120).fadeIn(10);
+					myTimer[e]=setInterval(function(){
+							time[e]=time[e]-1;
+							$("#t"+e).css('width',time[e]+"px");
+							testt(e);
+						},500);
+					};
+				
+
+			};
+			
+			function testt(e) {
+			if(time[e]<=0) {
+				clearInterval(myTimer[e]);
+				ats(e);
+				$("#b"+e).fadeout(10);
+			};
+			
+			}
+			function fsz() {
+			$("li").css('font-size',$("#fontSize").val()+"px");
+			$("li").css('margin-left',$("#fontSize").val()+"px");
+			};
+        </script>
+        <style>
+            button {
+                width:30px;
+                height:30px;
+                border-radius:15px;
+                padding:0px;
+                margin:5px;
+				font-size:10px;
+                    }
+            ol > li {
+			margin-left:30px;
+			font-size:30px;
+			}
+            
+            li > div {
+                transition: background 1s; 
+                border-radius:3px;
+            
+
+            }
+			#fontSize{
+			height:10px;
+			}
+			
+			
+			.bar {
+			width:0px;
+			background:#95e203;
+			height:6px;
+			transition: width 0.5s;
+			}
+			.barb {
+			border:solid 1px;
+			width:0px;
+			display:none;
+			}
+        </style>
+    </head>
+
+    <body>
+        <ol id="bod"> </ol>
+        <button onClick="add()">+</button>
+		<button id="addfile">O</button>
+		<input type="file" id="files" style="display:none"></input>
+		+<input type="range" id="fontSize" oninput="fsz()" value="30" min="30" max="100"></input>-
+    </body>
+
+</html>
